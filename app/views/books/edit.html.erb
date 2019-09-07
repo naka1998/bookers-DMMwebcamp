@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <h1>Editing Book</h1>
+    <div>
+    <%= form_for(@book) do |f| %>
+      <label>Title
+      <%= f.text_field :title %>
+      </label>
+      <label>Opinion
+      <%= f.text_area :body %>
+      </label>
+      <%= f.submit %>
+    <% end %>
+    </div>
+  <%= link_to "show", book_path(@book.id)%> | <%= link_to "Back", books_path %>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>

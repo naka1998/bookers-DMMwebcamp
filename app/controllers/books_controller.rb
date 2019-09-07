@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!
   def home
     if user_signed_in?
       redirect_to user_path(current_user.id)
@@ -25,21 +26,34 @@ class BooksController < ApplicationController
       flash[:notice] = 'Book was successfully created.'
       redirect_to book_path(book.id)
     else
-      flash[:error] = "ERROR: Book title and body can't be blank."
-      redirect_to user_path(current_user.id)
+      flash[:error] = "error."
+      redirect_to books_path
+    end
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+    if current_user.id != @book.user_id
+      redirect_to books_path
+    end
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    @book.update(book_params)
+    if @book.valid?
+      flash[:notice] = 'Book was successfully updated.'
+      redirect_to book_path(@book.id)
+    else
+      flash[:error] = 'error.'
+      redirect_to book_path(@book.id)
     end
   end
   
-  def edit
-    
-  end
-  
-  def update
-    
-  end
-  
   def destroy
-    
+    @book = Book.find(params[:id])
+    @book.destroy
+    redirect_to books_path
   end
 
   private
