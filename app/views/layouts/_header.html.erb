@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand ml-5" href="/">Bookers</a>
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="Navber">
+    <ul class="navbar-nav">
+      <li class="nav-item mr-5">
+      <%= link_to root_path, class:"text-decoration-none text-light" do %>
+        <i class="fas fa-home fa_white"></i><span> Home</span>
+      <% end %>
+      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item mr-5">
+        <%= link_to users_path, class:"text-decoration-none text-light" do %>
+          <i class="fas fa-user fa_white"></i><span> Users</span>
+        <% end %>
+        </li>
+        <li class="nav-item mr-5">
+          <%= link_to books_path, class:"text-decoration-none text-light" do %>
+          <i class="fas fa-book fa_white"></i><span> Books</span>
+          <% end %>
+        </li>
+        <li class="nav-item mr-5">
+        <%= link_to destroy_user_session_path, method: :delete, class:"text-decoration-none text-light" do %>
+          <i class="fas fa-sign-out-alt fa_white"></i><span> Log out</span>
+        <% end %>
+        </li>
+      <% else %>
+        <li class="nav-item mr-5">
+        <%= link_to  "", class:"text-decoration-none text-light" do %>
+          <i class="fas fa-link fa_white"></i><span> About</span>
+        <% end %>
+        </li>
+        <li class="nav-item mr-5">
+        <%= link_to new_user_registration_path, class:"text-decoration-none text-light" do %>
+          <i class="fas fa-user-plus fa_white"></i><span> Sign up</span>
+        <% end %>
+        </li>
+        <li class="nav-item mr-5">
+        <%= link_to new_user_session_path, class:"text-decoration-none text-light" do %>
+          <i class="fas fa-sign-in-alt fa_white"></i><span> Log in</span>
+        <% end %>
+        </li>
+      <% end %>
+
+    </form>
+  </div><!-- /.navbar-collapse -->
+</nav>

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+    <%= render 'layouts/userinfo' %>
+    </div>    
+    <div class="col-9">
+      <h1>Users</h1>
+      <table class="table">
+        <th class="table_header">image</th>
+        <th class="table_header">name</th>
+        <th class="table_header"></th>
+      </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td class="table_data">
+          <%= link_to user_path(user.id) do %>
+            <%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg", size:'40x40' %>
+          <% end %>
+          </td>
+          <td class="table_data"><%= user.name %></td>
+          <td class="table_data"><%= link_to 'show', user_path(user.id) %></td>
+        </tr>
+      <% end %>
+    </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+    <%= render 'layouts/newbook' %>
+    </div>
+  </div>
+</div>
