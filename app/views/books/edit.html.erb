@@ -5,13 +5,13 @@
     <h1>Editing Book</h1>
     <div>
     <%= form_for(@book) do |f| %>
-      <label>Title
-      <%= f.text_field :title %>
+      <label class="d-block w-100">Title
+      <%= f.text_field :title, class:"d-block w-100" %>
       </label>
-      <label>Opinion
-      <%= f.text_area :body %>
+      <label class="d-block w-100">Opinion
+      <%= f.text_area :body, class:"d-block w-100" %>
       </label>
-      <%= f.submit %>
+      <%= f.submit class:"btn btn-primary btn-block"  %>
     <% end %>
     </div>
   <%= link_to "show", book_path(@book.id)%> | <%= link_to "Back", books_path %>
