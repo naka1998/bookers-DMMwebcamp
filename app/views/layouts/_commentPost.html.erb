@@ -1,0 +1,5 @@
+<%= form_for [@book,@comment] do |f| %>
+  <p>コメント投稿</p>
+  <%= f.text_area :body,size: "20x8" %><br>
+  <%= f.submit class:"btn btn-primary" %>
+<% end %>

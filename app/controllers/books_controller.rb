@@ -16,6 +16,9 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @user = User.find(@book.user_id)
     @post = Book.new
+    @comment = Comment.new
+    @comments = Comment.where(book_id: @book.id)
+    @favos = Favorite.where(book_id: @book.id)
   end
 
   def create
