@@ -5,9 +5,21 @@
 <p>name:<%= @user.name %></p>
 <hr>
 <p>introduction:<%= @user.introduction %></p>
+<%= link_to follow_list_path(@user) do%>
+  <p>follows:<%= follow_user_of(@user).count %></p>
+<% end %>
+<%= link_to follower_list_path(@user) do%>
+  <p>followers:<%= follower_of(@user).count %></p>
+<% end %>
 <% if @user.id == current_user.id %>
   <%= link_to edit_user_path(@user), class: "pull-right" do %>
   <span class="btn btn-light btn-block"><i class="fas fa-wrench"></i></span>
+  <% end %>
+<% else %>
+  <% if follow?(@user) %>
+    <%= link_to "followed", follows_path(@user), class:"btn btn-success btn-block", method: :delete %>
+  <% else %>
+    <%= link_to "follow", follows_path(@user), class:"btn btn-outline-success btn-block", method: :post %>
   <% end %>
 <% end %>
 
