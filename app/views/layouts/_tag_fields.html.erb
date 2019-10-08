@@ -1,0 +1,14 @@
+<div class='nested-fields'>
+  <div class="field">
+    <%= f.label :name, value:"タグ名" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="descriptions">
+    <%= f.fields_for :descriptions do |desc| %>
+      <%= render 'layouts/description_fields', :f => desc %>
+    <% end %>
+    <%= link_to_add_association '説明を追加', f, :descriptions,partial: 'layouts/description_fields' %>
+  </div>
+  <%= link_to_remove_association "タグを消す", f,class:"btn btn-outline-danger btn-sm" %>
+  <hr>
+</div>

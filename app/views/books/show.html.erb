@@ -36,6 +36,13 @@
         <% end %>
         </tr>
       </table>
+      <p>タグ：
+      <% @book.tags.each do |tag| %>
+        <%= link_to book_tag_path(@book,tag) do %>
+          <span class="badge badge-secondary" ><%= tag.name %> </span>
+        <% end %>
+      <% end %>
+      </p>
     </div>
   </div>
   <div class="row">

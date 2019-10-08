@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-9">
+      <h2>タグの詳細</h2>
+      <p>タグ名: <%= @tag.name%></p>
+      <ul>
+        <% @tag.descriptions.each do |desc| %>
+          <li>
+            <%= desc.body %>
+          </li>
+        <% end %>
+      </ul>
+      </p>
+    </div>
+  </div>
+</div>
+

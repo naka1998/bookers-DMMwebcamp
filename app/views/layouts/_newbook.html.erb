@@ -1,8 +1,15 @@
 <h1>New book</h1>
-<%= form_for(@post) do |f| %>
+<%= form_for @post do |f| %>
   <p>Title</p>
   <%= f.text_field :title, class:"d-block w-100" %>
   <p>Body</p>
-  <%= f.text_area :body, class:"d-block w-100" %><br>
-  <%= f.submit class:"btn btn-primary btn-block" %>
+  <%= f.text_area :body, class:"d-block w-100" %>
+  <h4>タグ</h4>
+  <div class="tags">
+    <%= f.fields_for :tags do |tag| %>
+      <%= render 'layouts/tag_fields', :f => tag %>
+    <% end %>
+    <%= link_to_add_association 'タグを追加', f, :tags,partial: 'layouts/tag_fields' %>
+  </div>
+  <%= f.submit '保存',class:"btn btn-primary btn-block"%>
 <% end %>

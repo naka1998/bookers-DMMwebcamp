@@ -11,6 +11,13 @@
       <label class="d-block w-100">Opinion
       <%= f.text_area :body, class:"d-block w-100" %>
       </label>
+      <h4>タグ</h4>
+      <div class="tags">
+        <%= f.fields_for :tags do |tag| %>
+          <%= render 'layouts/tag_fields', :f => tag %>
+        <% end %>
+        <%= link_to_add_association 'タグを追加', f, :tags,partial: 'layouts/tag_fields' %>
+      </div>
       <%= f.submit class:"btn btn-primary btn-block"  %>
     <% end %>
     </div>
